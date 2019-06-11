@@ -8,6 +8,12 @@ I often edit STL files to customize, improve, or repair them, and I find that so
 
 The modified python script, **stldim.py** (included here), when run in the directory of a file you want to place, will generate a file that may be used as a library. It will contain, as well as the code to place the object, comments showing the max and min x, y, and z values (a bounding box), as well as the x, y, and z size of the object (handy for woodworkers laying out cuts for lumber or plywood).
 
+You will, if you don't have the modules already, install stl, numpy, and numpy-stl
+  **pip install stl**
+  **pip install numpy**
+  **pip3 install numpy-stl**
+  Thanks to **Carsten Arnholm** for pointing these out to me
+
 It may be used stand-alone, or as a library.
 
 Usage: Place the **stldim.py** file where you keep your Python executable scripts. On a command line, CD to the directory containing the STL you wish to move, and redirecting the output to the library filename (see the example). Run the script, giving it the name of the STL file as an argument.
