@@ -56,6 +56,8 @@ midx = round(xsize/2,3)
 midy = round(ysize/2,3)
 midz = round(zsize/2,3)
 
+bn = os.path.splitext(os.path.basename(sys.argv[1]))[0].strip().replace(" ", "_");
+
 # the logic is easy from there
 
 print ("// File:", sys.argv[1])
@@ -63,8 +65,11 @@ lst = ['obj =("',sys.argv[1],'");']
 obj = ['\t\timport("',sys.argv[1],'");']
 
 print ("// X size:",xsize)
+print (bn, "_size_x = ",xsize,";", sep = '')
 print ("// Y size:", ysize)
+print (bn, "_size_y = ",ysize,";", sep = '')
 print ("// Z size:", zsize)
+print (bn, "_size_z = ",zsize,";", sep = '')
 print ("// X position:",minx)
 print ("// Y position:",miny)
 print ("// Z position:",minz)
@@ -72,39 +77,38 @@ print ("// Z position:",minz)
 #--------------------
 print("NE=1; NW=2; SW=3; SE=4; CTR=5;")
 
-
-print ("module obj2origin (where) {")
+print ("module ",bn," (where = NE) {",sep='')
 print ("\tif (where == NE) {")
-print ("\t\tobjNE ();")
+print ("\t\t",bn,"_NE ();",sep='')
 print("\t}")
 print("")
 
 print("\tif (where == NW) {")
 print("\t\ttranslate([",-xsize,",",0,",",0,"])")
-print ("\t\tobjNE ();")
+print ("\t\t",bn,"_NE ();",sep='')
 print("\t}")
 print("")
 
 print ("\tif (where == SW) {")
 print("\t\ttranslate([",-xsize,",",-ysize,",",0,"])")
-print ("\t\tobjNE ();")
+print ("\t\t",bn,"_NE ();",sep='')
 print("\t}")
 print("")
 
 print ("\tif (where == SE) {")
 print("\t\ttranslate([",0,",",-ysize,",",0,",","])")
-print ("\t\tobjNE ();")
+print ("\t\t",bn,"_NE ();",sep='')
 print("\t}")
 print("")
 
 print ("\tif (where == CTR) {")
 print("\ttranslate([",-midx, ",",-midy,",",-midz,"])")
-print ("\t\tobjNE ();")
+print ("\t\t",bn,"_NE ();",sep='')
 print("\t}")
 print("}")
 print("")
 
-print("module objNE () {")
+print("module ",bn,"_NE () {",sep='')
 print("\ttranslate([",-minx,",",-miny,",",-minz,"])")
 print ("".join(obj))
 print("}")
