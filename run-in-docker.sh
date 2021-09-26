@@ -31,7 +31,7 @@ TEMP_FILEPATH="$SCRIPT_DIR/$TEMP_FILENAME"
 # Copy passed argument to this directory for temporary usage
 cp "$INPUT_FILEPATH" "$TEMP_FILEPATH"
 
-cd $SCRIPT_DIR
+cd "$SCRIPT_DIR"
 docker build -t open-scad-stl .
 
 if [ $# -gt 1 ]
